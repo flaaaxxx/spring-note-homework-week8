@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pl"
+      xmlns:th="http://www/thymeleaf.org">
+
+<head th:replace="shared/header :: links">
+    <title>Notatka</title>
+</head>
+
+<body>
+
+<div style="padding:50px">
+    <h1 style="border-bottom:1px solid #bbb; padding:0 0 10px 0; margin:10px 0 20px 0;" th:text="${note.title}"></h1>
+    <div class="row">
+        <p class="form-group" th:text="${note.text}"></p>
+    </div>
+    <div class="row">
+        <a th:href="@{/show-all-notes}" class="btn btn-primary btn-raised">Powrót</a>
+    </div>
+</div>
+
+</body>
+</html>

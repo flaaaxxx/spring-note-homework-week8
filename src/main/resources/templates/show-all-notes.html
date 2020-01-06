@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www/thymeleaf.org">
+
+<head th:replace="shared/header :: links">
+    <title>Notatki</title>
+</head>
+
+<body>
+<div style="padding:50px">
+    <h1 style="border-bottom:1px solid #bbb; padding:0 0 10px 0; margin:10px 0 20px 0;">Notatki</h1>
+
+    <a th:href="@{/add-note}" class="btn btn-primary btn-raised">Utwórz notatkę</a>
+    <span id="noteSpan">
+        <span th:each="note : ${notes}">
+            <div style="border-bottom: 1px solid #bbb; margin-top: 10px;">
+                <p style="display: inline-block; margin-bottom: 2px;">
+                    <a th:href="@{/show-note/__${note.id}__}"
+                       style="margin-left: 10px; margin-right: 50px; width: 150px;" th:text="${note.title}"></a>
+                </p>
+
+                <a th:href="@{/edit-note/__${note.id}__}" class="btn btn-waring btn-raised">Edycja</a>
+
+                <form style="display: inline-block;" th:action="@{/delete-note-execute/__${note.id}__}" method="POST">
+                    <button type="submit" class="btn btn-waring btn-raised">Usuń</button>
+                </form>
+            </div>
+        </span>
+    </span>
+</div>
+</body>
+</html>
